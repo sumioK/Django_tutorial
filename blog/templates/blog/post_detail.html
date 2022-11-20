@@ -4,6 +4,30 @@
   <small>Posted at {{post.posted_date}}</small>
   <p>{{post.intro}}</p>
   <hr/>
+<!-- コメントされたものを表示 -->
+<h2 class="subtitle">コメント</h2>
+
+{% for comment in post.comments.all %}
+<article class="media">
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>
+          {{comment.name}}
+          <small>{{comment.posted_date}}</small>
+        </strong>
+        <br>
+        {{comment.body}}
+      </p>
+    </div>
+  </div>
+</article>
+{% empty %}
+<div class="notification">
+  <p>コメントはまだありません</p>
+</div>
+<hr>
+{% endfor %}
 
   <!-- コメント投稿エリア -->
   <h2 class="subtitle">コメントを追加</h2>
